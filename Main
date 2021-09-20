@@ -1,0 +1,52 @@
+package com.OOP;
+import java.util.Scanner;
+public class Main {
+    static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        char choice;
+
+        do {
+            Numbers numbers;
+            System.out.print("Do you want to assign values using constructor (y\\n)? ");
+            choice = Character.toLowerCase(sc.next().charAt(0));
+
+            if(choice == 'y'){
+                int firstNum;
+                double secondNum;
+
+                System.out.print("Enter first number value: ");
+                firstNum = sc.nextInt();
+                System.out.print("Enter second number value: ");
+                secondNum = sc.nextDouble();
+                System.out.println("Object created with non-default constructor");
+                //Values added via non-default constructor
+                numbers = new Numbers(firstNum, secondNum);
+            } else if(choice == 'n'){
+                numbers = new Numbers();
+                //Values added via setter methods
+                System.out.print("Enter first number value: ");
+                numbers.setFirstNum(sc.nextInt());
+                System.out.print("Enter second number value: ");
+                numbers.setSecondNum(sc.nextDouble());
+                System.out.println("Object created with default constructor");
+            } else {
+                System.out.println("Invalid choice, try again.");
+                continue;
+            }
+
+            System.out.println("\nFirst Number: " + numbers.getFirstNum());
+            System.out.println("Second Number: " + numbers.getSecondNum());
+            System.out.println("Sum: " + numbers.sum());
+            System.out.println("Average: " + numbers.average());
+            System.out.println("Binary equivalent of first number: " + numbers.convertToBinary());
+            System.out.println("Hexadecimal equivalent of second number: " + numbers.convertToHexa());
+
+            do{
+                System.out.print("\nDo you want to keep going (y\\n)? ");
+                choice = Character.toLowerCase(sc.next().charAt(0));
+                System.out.println("================================================================");
+            }while(choice != 'y' && choice != 'n');
+
+        }while(choice == 'y');
+    }
+}
