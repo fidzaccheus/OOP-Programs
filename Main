@@ -4,6 +4,7 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         char choice;
+        boolean isFinished = false;
 
         do {
             Numbers numbers;
@@ -44,9 +45,10 @@ public class Main {
             do{
                 System.out.print("\nDo you want to keep going (y\\n)? ");
                 choice = Character.toLowerCase(sc.next().charAt(0));
-                System.out.println("================================================================");
             }while(choice != 'y' && choice != 'n');
 
-        }while(choice == 'y');
+            isFinished = choice == 'n' ? true : false;
+            System.out.println("================================================================");
+        }while(!isFinished);
     }
 }
